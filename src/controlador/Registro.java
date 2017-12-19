@@ -31,6 +31,36 @@ public class Registro {
     }
     
     /**
+     * Metodo boolean modificar el registro de la base de datos que fue seleccionado, genera mensajes de avance durante el proceso
+     * @param nuevo
+     * @return true si fue modificado de manera correcta a la base de datos
+     */
+    public boolean modificar(Empleado nuevo){
+        
+        try {
+            Statement s = Conexion.obtenerInstancia().createStatement();//se crea el statment de la conexion
+            if(buscar(nuevo.getRut())){//se usa el metodo buscar para comprobar si el rut ya esta registrado
+                String sentencia =  "UPDATE RRHH SET "+ 
+                                        "NOMBRE = "+nuevo.getNombre()+","+
+                                        "FECHAI = "+nuevo.getFechaIngreso()+","+
+                                        "FECHAN = '"+nuevo.getFechaNacimiento()+"',"+
+                                        "DIRECCION = '"+nuevo.getDireccion()+"'"+
+                                    "WHERE CODIGO = "+nuevo.getRut();//busca el rut especifico
+
+                s.execute(sentencia);//se ejecuta la sentencia sql
+
+                System.out.println("Modificado con exito");//mensaje de exito
+                return true;//reorno de exito
+            }else{
+                System.out.println("Codigo no encontrado");//mensaje de error si el codigo no esta registrado
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo modficar");//mensaje de error si no se modificó
+        }
+        return false;//retorno de error
+    }
+    
+    /**
      * Metodo boolean borrar registro por rut, genera mensajes de avance durante el proceso
      * @param rut
      * @return true si fue borrado de manera correcta a la base de datos
@@ -118,7 +148,6 @@ public class Registro {
             return false;//retorno de error en la consulta
         }
     }
-    
     
     /**
      * Metodo Empleado Obtener retorna los datos de un registro ya guardado, genera mensajes de avance durante el proceso
