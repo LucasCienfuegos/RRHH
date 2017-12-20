@@ -47,7 +47,7 @@ public class Registro {
             }else{
                 System.out.println("ID repetido");
             }
-        } catch (SQLException ex) {
+        } catch (SQLException ex) { ex.printStackTrace();
             System.out.println("No se pudo agregar");
         }
         return false;

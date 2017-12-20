@@ -137,7 +137,7 @@ public class Empleado {
      * @param fechaIngreso 
      */
     public void setFechaIngreso(String fechaIngreso) {
-        if(fechaIngreso.length()>7 && fechaIngreso.length()<31){
+        if(fechaIngreso.length()>1 && fechaIngreso.length()<31){
             this.fechaIngreso = fechaIngreso;
         }else{
             System.out.println("Fecha de Ingreso entre 8 y 30 caracteres.");
@@ -149,7 +149,7 @@ public class Empleado {
      * @param fechaNacimiento 
      */
     public void setFechaNacimiento(String fechaNacimiento) {
-        if(fechaNacimiento.length()>7 && fechaNacimiento.length()<31){
+        if(fechaNacimiento.length()>1 && fechaNacimiento.length()<31){
             this.fechaNacimiento = fechaNacimiento;
         }else{
             System.out.println("Fecha de Nacimiento entre 8 y 30 caracteres.");
