@@ -30,6 +30,31 @@ public class Registro {
         return aux;//se retorna el registro para usarse
     }
     
+    
+    public boolean agregar(Empleado empleado){
+        
+        try {
+            Statement s = Conexion.obtenerInstancia().createStatement();
+            if(!buscar(empleado.getId())){
+                String sentencia = "INSERT INTO RRHH(ID, RUT, DV, NOMBRE, FECHAI, FECHAN, DIRECCION)"
+                + "VALUES("+empleado.getId()+","+empleado.getRut()+",'"+empleado.getDv()+"','"+empleado.getNombre()+"','"+empleado.getFechaIngreso()+"','"+empleado.getFechaNacimiento()+"','"+empleado.getDireccion()+"')";
+                       
+
+                s.execute(sentencia);
+
+                System.out.println("Insertado con exito");
+                return true;
+            }else{
+                System.out.println("ID repetido");
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo agregar");
+        }
+        return false;
+    }
+    
+    
+    
     /**
      * Metodo boolean borrar registro por rut, genera mensajes de avance durante el proceso
      * @param rut
