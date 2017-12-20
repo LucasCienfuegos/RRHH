@@ -132,7 +132,7 @@ public class Registro {
      * @return resultado de la consulta a la base de datos
      */
     public ResultSet mostrar(int rut){
-        String sentencia = "SELECT * FROM RRHH WHERE RUT = "+rut;//String de la sentencia para buscar los registros agregados
+        String sentencia = "SELECT ID,RUT||'-'||DV,NOMBRE,FECHAN,FECHAI,DIRECCION FROM RRHH WHERE RUT = "+rut;//String de la sentencia para buscar los registros agregados
         Statement s;//se crea el statment de la conexion
         
         try {

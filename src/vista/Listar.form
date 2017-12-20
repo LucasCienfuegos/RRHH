@@ -102,7 +102,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblBuscar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar por c&#xf3;digo de Producto"/>
+            <Property name="text" type="java.lang.String" value="Buscar por Rut de Registro"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="pnlBuscar">

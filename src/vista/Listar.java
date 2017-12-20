@@ -33,11 +33,12 @@ public class Listar extends javax.swing.JFrame {
         ResultSet aux = Registro.metodo().mostrar();
         try{
             while(aux.next()){
-                modelo.addRow(new Object[]{aux.getInt("CODIGO"),
-                aux.getInt("PRECIO"),
-                aux.getInt("ID_CATEGORIA"),
-                aux.getString("FORMATO4K"),
-                aux.getString("NOMBRE"),});
+                modelo.addRow(new Object[]{aux.getInt("ID"),
+                aux.getString("RUT||'-'||DV"),
+                aux.getString("NOMBRE"),
+                aux.getString("FECHAN"),
+                aux.getString("FECHAI"),
+                aux.getString("DIRECCION"),});
             }
             jTable2.setModel(modelo);
         }catch(SQLException e){
@@ -54,12 +55,16 @@ public class Listar extends javax.swing.JFrame {
       return false;//This causes all cells to be not editable
     }
   };
-        modelo.setColumnIdentifiers(new Object[]{"Codigo","Precio","Categoria","Formato 4K","Nombre"});
+        modelo.setColumnIdentifiers(new Object[]{"ID","Rut","Nombre","Fecha N.","Fecha I.","Direccion"});
         ResultSet aux = busqueda;
         try{
             while(aux.next()){
-                modelo.addRow(new Object[]{aux.getInt("CODIGO"),aux.getInt("PRECIO"),
-                aux.getInt("ID_CATEGORIA"),aux.getString("FORMATO4K"),aux.getString("NOMBRE"),});
+                modelo.addRow(new Object[]{aux.getInt("ID"),
+                aux.getString("RUT||'-'||DV"),
+                aux.getString("NOMBRE"),
+                aux.getString("FECHAN"),
+                aux.getString("FECHAI"),
+                aux.getString("DIRECCION"),});
             }
             jTable2.setModel(modelo);
         }catch(SQLException e){
@@ -67,8 +72,8 @@ public class Listar extends javax.swing.JFrame {
         }
     }
     
-    private void busqueda(String codigo){
-        int id = Integer.parseInt(codigo);
+    private void busqueda(String rut){
+        int id = Integer.parseInt(rut);
         if(Registro.metodo().buscar(id)){
             limpiarTabla();
             llenarTabla(Registro.metodo().mostrar(id));
@@ -137,7 +142,7 @@ public class Listar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblBuscar.setText("Buscar por código de Producto");
+        lblBuscar.setText("Buscar por Rut de Registro");
 
         pnlBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -268,7 +273,7 @@ public class Listar extends javax.swing.JFrame {
         if(txtBuscar.getText().length()>0){
             busqueda(txtBuscar.getText());
         }else{
-            JOptionPane.showMessageDialog(null,"Coloque un numero en el codigo");
+            JOptionPane.showMessageDialog(null,"Coloque un numero en el RUT");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -289,19 +294,20 @@ public class Listar extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         if(txtBuscar.getText().length()>0){
-            Pelicula mod = Registro.metodo().obtener(Integer.parseInt(txtBuscar.getText()));
-            Modificar det=new Modificar();
-            det.lblCodigoV.setText(mod.getCodigo()+"");
-            det.txtNombre.setText(mod.getNombre());
-            det.txtPrecio.setText(mod.getPrecio()+"");
-            if(mod.isFormato4K()){
-                det.rbtSi.setSelected(true);
-            }else{
-                det.rbtNo.setSelected(true);
-            }
-            det.cmbCategoria.setSelectedIndex(mod.getIdCategoria());
-            det.setVisible(true);
-            Listar.this.dispose();
+//            Empleado mod = Registro.metodo().obtener(Integer.parseInt(txtBuscar.getText()));
+//            Modificar det=new Modificar();
+//            det.lblCodigoV.setText(mod.getCodigo()+"");
+//            det.txtNombre.setText(mod.getNombre());
+//            det.txtPrecio.setText(mod.getPrecio()+"");
+//            if(mod.isFormato4K()){
+//                det.rbtSi.setSelected(true);
+//            }else{
+//                det.rbtNo.setSelected(true);
+//            }
+//            det.cmbCategoria.setSelectedIndex(mod.getIdCategoria());
+//            det.setVisible(true);
+//            Listar.this.dispose();
+            JOptionPane.showMessageDialog(null,"Sistema en Construccion");
         }else{
             JOptionPane.showMessageDialog(null,"Coloque un numero en el codigo");
         }
