@@ -5,7 +5,9 @@
  */
 package vista;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controlador.Registro;
+import java.util.Date;
 import modelo.Empleado;
 
 /**
@@ -199,16 +201,15 @@ public class Agregar extends javax.swing.JFrame {
         
         Empleado empleado;
         
-        jCalendar1.getDate();
-        jCalendar2.getDate();
+        //Date fechaNacimiento = jCalendar1.getDate();
+        //Date fechaIngreso = jCalendar2.getDate();
         String nombre = txtnombre.getText();
         Integer id = Integer.parseInt(txtid.getText());
         String direccion = txtdireccion.getText();
         Integer rut = Integer.parseInt(txtrut.getText());
         String dv = txtdv.getText();
         
-        empleado = new Empleado(id,rut, String dv, String nombre, String fechaIngreso, String fechaNacimiento, String direccion)
-        
+        //empleado = new Empleado(id,rut, String dv, String nombre, String fechaIngreso, String fechaNacimiento, String direccion)
         
         
     }//GEN-LAST:event_btnagregarActionPerformed
